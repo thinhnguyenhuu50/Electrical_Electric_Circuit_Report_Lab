@@ -7,6 +7,9 @@
 \ProcessOptions\relax
 \LoadClass[a4paper]{article}
 
+% Indentation
+\setlength{\parindent}{0pt}
+
 % Set up font
 \RequirePackage[fontsize=12pt]{scrextend}
 \RequirePackage[utf8]{vntex}
