@@ -15,7 +15,7 @@
 \RequirePackage[utf8]{vntex}
 \RequirePackage[T5]{fontenc}
 \RequirePackage{mathptmx} % Apply Times New Roman font
-\RequirePackage{anyfontsize,amsmath,amssymb} % Fonts for math environment
+\RequirePackage{anyfontsize,amsmath,amssymb,amsfonts} % Fonts for math environment ,anyfontsize,
 \RequirePackage[vietnamese=nohyphenation]{hyphsubst} % Ignore a warning
 \RequirePackage[vietnamese]{babel} % Support Vietnamese text
 
@@ -26,12 +26,15 @@
 \usetikzlibrary{calc}
 \RequirePackage{pgffor} % For loops
 \RequirePackage{xstring} % For string manipulation
-\RequirePackage{extramarks}
+\RequirePackage{extramarks} 
+\RequirePackage{enumitem}
+\RequirePackage{placeins}
+\RequirePackage{subcaption}
 
 % Some packages that seem pretty redundant
 \RequirePackage{geometry,graphicx,indentfirst,setspace}
 \RequirePackage{booktabs}
-\RequirePackage[center]{caption}
+\RequirePackage{caption}
 
 \RequirePackage{fancyhdr,hyperref}
 \RequirePackage[super,square,sort]{natbib}
