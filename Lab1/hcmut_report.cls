@@ -29,12 +29,11 @@
 \RequirePackage{extramarks} 
 \RequirePackage{enumitem}
 \RequirePackage{placeins}
-\RequirePackage{subcaption}
 
 % Some packages that seem pretty redundant
 \RequirePackage{geometry,graphicx,indentfirst,setspace}
 \RequirePackage{booktabs}
-\RequirePackage{caption}
+\RequirePackage{caption,subcaption}
 
 \RequirePackage{fancyhdr,hyperref}
 \RequirePackage[super,square,sort]{natbib}
@@ -62,9 +61,9 @@
   paper=a4paper,
   left=3cm,
   right=2cm,
-  vmargin=2cm, % Set for both top and bottom
+  vmargin=1cm, % Set for both top and bottom
   includeheadfoot=true,
-  headheight=35pt
+  headheight=0pt
 }
 
 \onehalfspacing
@@ -99,26 +98,24 @@
 
 \if@twoside
     \fancyfoot[LO]{
-        \bfseries
         \begin{tabular}{rl}
         \begin{picture}(25pt,15pt)
-            \put(0,-8pt){\includegraphics[width=20pt]{graphics/hcmut.png}}
+            \put(0,-8pt){\includegraphics[width=10mm, height=10mm]{graphics/hcmut.png}}
         \end{picture}
         \begin{tabular}{l}
-            \ttfamily\@uniname \\
-            \ttfamily\@deptname \\
+            Trường Đại Học Bách Khoa - Đại học Quốc gia TP.HCM \\
+            Khoa Khoa Học \& Kỹ Thuật Máy Tính \\
         \end{tabular}
         \end{tabular}
     }
     \fancyfoot[RE]{
-        \bfseries
         \begin{tabular}{rl}
         \begin{tabular}{r}
-            \ttfamily\@uniname \\
-            \ttfamily\@deptname \\
+            Trường Đại Học Bách Khoa - Đại học Quốc gia TP.HCM \\
+            Khoa Khoa Học \& Kỹ Thuật Máy Tính \\
         \end{tabular}
         \begin{picture}(25pt,15pt)
-            \put(0,-8pt){\includegraphics[width=20pt]{graphics/hcmut.png}}
+            \put(0,-8pt){\includegraphics[width=10mm, height=10mm]{graphics/hcmut.png}}
         \end{picture}
         \end{tabular}
     }
@@ -141,7 +138,7 @@
 \fancyfoot[RO]{Trang \thepage}
 %------------------------------------------------------------------------------------------------------------------------%
 \newcommand{\coverpage}{
-    
+
     \begin{tikzpicture}[overlay,remember picture]
         \draw [line width=3pt]        
             ($ (current page.north west) + (2.5cm,-1.5cm) $)
@@ -156,6 +153,7 @@
     \pagestyle{empty}
 
     \vspace*{-3\baselineskip}
+    \vspace{35pt}
     \begin{center}
         \MakeUppercase{\@upperuniname}
 
