@@ -9,19 +9,47 @@ Nếu một phần tử tiêu thụ điện năng, hãy sử dụng điện tr�
     \caption{Tìm các phần tử và biến chưa biết, sau đó kiểm tra chúng bằng mô phỏng}
     \end{figure}
 \subsection{Tính toán}
-\textbf{Ghi chú:}
+\textbf{Ghi chú}:\\
 Giải thích, công thức và phương trình được mong đợi hơn là chỉ có kết quả.\\
-Theo phân tích lưới.\\
-Vòng 1:
-\begin{align*}
-12I_{AB} + 4 - 10 = 0 \rightarrow I_{AB} = 0,5 (A).
-\end{align*}
-Vòng 2:
-\begin{align*}
-    -4 + 16 + 3i_x = 0 \rightarrow i_x = -4 (A).
-\end{align*}
-Ta có:
-\begin{align*}
-    v = I_AB.12 =6 (V)\\
-    i_x = -4 (A).
-\end{align*}
+\textbf{Lời giải}\\
+Theo định luật Kirchhoff's Current (KCL): \(\displaystyle \sum i_{in} = \sum i_{out} \), ta có \(I_{AB} = i_x + I_{BC}\)\\
+Theo định luật Kirchhoff's Voltage(KVL): Tổng có hướng của các hiệu điện thế (điện áp) xung quanh bất kỳ vòng kín nào đều bằng không.\\
+Vòng kín 1:
+\(12I_{AB} + 4 - 10 = 0 \rightarrow I_{AB} = 0,5 (A).\)
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{graphics/ex9/f2.png}
+    \caption{Vòng kín 1}
+    \end{figure}\\
+Vòng kín 2: \(-4 + 16 + 3i_x = 0 \rightarrow i_x = -4 (A).\)
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{graphics/ex9/f3.png}
+    \caption{Vòng kín 2}
+\end{figure}\\
+Ta có:\\
+\(
+    v = I_{AB}.R_{AB} = 0,5.12 = 6 (V)\\
+    i_x = -4 (A).\\
+\)
+Vậy, ta có:\\
+\(
+p_1 = i_x.v_1= -4.4 = -16 (W) \rightarrow \) Thiết bị cung cấp điện năng.\\
+\(I_{AB} = 0,5 (A)\\
+I_{BC} = I_{AB} - i_x = 0,5 - (-4) = 4,5 (A) \\
+p_2 = I_{BC}.v_{BC} = 4,5.16 = 72 (W) \rightarrow\) Thiết bị tiêu thụ điện.\\
+\(U_{CD} = 3i_x = 3.(-4) = -12 V (\) do \(V_D = 0 V)\)
+\subsection{Mô phỏng}
+\textbf{Tips:}\\
+To get the Current Controlled Voltage Source (CCVS) from the PSpice, under the Place
+menu, find \textbf{PSpice Component > Source > Controlled Sources > CCVS}.\\
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/ex9/f4.png}
+    \end{figure}\\
+    \textbf{Ảnh mô phỏng}
+\begin{figure}[!htbp]
+        \centering
+        \includegraphics[width=0.9\textwidth]{graphics/ex9/f5.png}
+        \end{figure}
+
