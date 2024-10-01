@@ -28,10 +28,13 @@
 % Some packages that seem pretty redundant
 \RequirePackage{geometry,graphicx,indentfirst,setspace}
 \RequirePackage{booktabs}
-\RequirePackage[center]{caption}
+\RequirePackage{caption,subcaption}
 
 \RequirePackage{fancyhdr,hyperref}
 \RequirePackage[super,square,sort]{natbib}
+
+% Indentation
+\setlength{\parindent}{0pt}
 
 % Define some default names and a corresponding command to update them
 \newcommand{\@upperuniname}{Vietnam National University Ho Chi Minh City}
