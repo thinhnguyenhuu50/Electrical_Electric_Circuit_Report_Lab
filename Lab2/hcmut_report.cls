@@ -25,6 +25,7 @@
 \RequirePackage{xstring} % For string manipulation
 \RequirePackage{extramarks}
 \RequirePackage{array, multirow}
+\RequirePackage{makecell}
 
 % Some packages that seem pretty redundant
 \RequirePackage{geometry,graphicx,indentfirst,setspace}

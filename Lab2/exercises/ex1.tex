@@ -1,4 +1,4 @@
-\section{Exercise 1}
+\section{Complete diode model}
 
 Theo mạch mô phỏng trên (Hình 1.2), hãy xác định điện áp trên điện trở và diode ($V_R, V_D$), cũng như dòng điện I trong mạch với hai giá trị khác nhau của $R_1$, bao gồm 220 Ohm và 1,5K Ohm. Giả sử rằng mô hình diode hoàn chỉnh được sử dụng để phân tích, có điện áp thuận ở mức 0,7V và điện trở bên trong bằng 50 Ohm.
 
@@ -32,17 +32,16 @@ Kết quả mô phỏng (hình ảnh):
 
 \begin{figure}[h]
     \centering
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \centering
         \includegraphics[width=0.8\linewidth]{graphics/ex1/f1.PNG}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.45\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \centering
         \includegraphics[width=0.8\linewidth]{graphics/ex1/f2.PNG}
     \end{subfigure}
     \caption{Kết quả mô phỏng trên PSpice}
-    \label{fig:sidebyside}
 \end{figure}
 
 \subsection{So sánh}    
@@ -65,4 +64,4 @@ Trong phần này, các tính toán lý thuyết và mô phỏng PSpice được
 
 Theo Kết quả Bài tập trên, hãy đưa ra một số nhận xét về quan sát (giữa kết quả tính toán và kết quả mô phỏng):
 
-Dựa vào kết quả trên, chúng ta có thể thấy rằng kết quả tính toán và kết quả mô phỏng có đôi chút khác biệt, điều này có thể được giải thích bởi điện trở bên trong diode, không phải là giá trị hằng số.
+Dựa vào kết quả trên, chúng ta có thể thấy rằng kết quả tính toán và kết quả mô phỏng có đôi chút khác biệt, điều này có thể được giải thích bởi điện trở bên trong diode không phải là giá trị hằng số.
