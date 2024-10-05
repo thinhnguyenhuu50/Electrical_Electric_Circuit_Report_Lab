@@ -26,6 +26,7 @@
 \RequirePackage{extramarks}
 \RequirePackage{array, multirow}
 \RequirePackage{makecell}
+\usepackage{float}
 
 % Some packages that seem pretty redundant
 \RequirePackage{geometry,graphicx,indentfirst,setspace}
