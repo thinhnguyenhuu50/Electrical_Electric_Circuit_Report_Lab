@@ -27,6 +27,7 @@
 \RequirePackage{array, multirow}
 \RequirePackage{makecell}
 \usepackage{float}
+\usepackage{tabularx}
 
 % Some packages that seem pretty redundant
 \RequirePackage{geometry,graphicx,indentfirst,setspace}
