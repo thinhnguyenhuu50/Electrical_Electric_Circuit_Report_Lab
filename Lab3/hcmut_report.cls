@@ -182,7 +182,7 @@
             Sinh viên thực hiện: \@student  
         \end{tabular}
         \vfill
-        \MakeUppercase{Thành phố Hồ Chí Minh, 17/09/2024}
+        \MakeUppercase{Thành phố Hồ Chí Minh, 29/10/2024}
     \end{center}
     \cleardoublepage
     \pagestyle{fancy}
