@@ -1,0 +1,22 @@
+\section{BJT used as a Switch}
+For a given BJT circuit, determine R1 and R2 to have IC saturated at 50mA. In this saturation mode, $V_{CE(Sat)}$ is 30mV. Assume that $V_{BE}$ = 0.7V and the current gain $\beta$ = 100.
+
+\begin{figure}[!htp]
+    \centering
+    % \includegraphics[width=4in]{source/picture/bai_3/pic2.PNG}
+    \caption{\textit{BJT used as switch in saturation mode}}
+    \label{bai3_manual_2}
+\end{figure}
+
+Present your solution to determine R1 and R2.
+Perform the simulation in PSpice to confirm the results. Capture the screen in PSpice and present in the report.\\
+
+\textbf{Solution:}\\
+$I_B = I_C / \beta $= 50 / 100 = 0.5 mA \\
+$R_1$ = ($V_{BB}$ - $V_{BE}$)/$I_B$ = (5 - 0.7)/(0.5 $* 10^-3$) = 8600 $\Omega$  \\
+$R_2$ = ($V_{CC}$ - $V_{CE}$)/$I_C$ = (10 - 0.03)/0.05 = 199.4 $\Omega$ \\
+
+
+\textbf{\textit{Your image goes here:}}\\
+% \includegraphics[]{source/picture/bai_3/3.3.PNG}
+\vspace{6cm}
