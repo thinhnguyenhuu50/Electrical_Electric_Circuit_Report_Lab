@@ -310,8 +310,8 @@ TSWLatexianTemp*
 # Website: https://www.altium.com/altium-designer/
 
 # Directories containing cache data
-History
-__Previews
+History/
+__Previews/
 
 # Directories containing logs and generated outputs
 Project\ Logs*
