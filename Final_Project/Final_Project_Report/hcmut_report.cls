@@ -66,7 +66,7 @@
 
 \onehalfspacing
 \raggedbottom
-\renewcommand{\arraystretch}{1.3}
+% \renewcommand{\arraystretch}{1.3}
 
 % Set depth of numbering for sections and table of contents
 \setcounter{secnumdepth}{3}
