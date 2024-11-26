@@ -1,1 +1,53 @@
 \section{Optional}
+\subsection{Timer}
+Timer là một tính năng quan trọng trong vi điều khiển hiện đại. Chúng giúp đo thời gian thực hiện tác vụ, tạo non-blocking code, kiểm soát pin timing và chạy hệ điều hành. Trong bài tập lớn này, chúng ta sẽ tìm hiểu cách sử dụng timer để chớp tắt đèn LED. Sử dụng timer interrupt để quét LED.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/LED_7seg.PNG}
+    \caption{Giao diện của 4 LED bảy đoạn kết nối với vi điều khiển}
+\end{figure}
+
+Mỗi LED bảy đoạn có bảy phân đoạn được đánh dấu từ \textbf{a} đến \textbf{g} \ref{digit} và phân đoạn thứ tám là dấu chấm thập phân. Trong diagram, mỗi LED bảy đoạn có 8 đèn LED bên trong tương ứng với 8 phân đoạn, nên tổng số đèn LED trong ma trận 4 LED bảy đoạn là 32. Tuy nhiên, không cần phải bật tất cả các đèn LED, chỉ cần một trong số chúng. Do đó, chỉ cần 12 chân để điều khiển 4 LED bảy đoạn. Sử dụng vi điều khiển, ta có thể bật các đèn cùng một khoảng thời gian $T_S$. Vì vậy, chu kỳ để  điều khiển 4 LED bảy đoạn sẽ là $4T_S$. Nói cách khác, những LED này được quét với  tần số $f = \frac{1}{4} T_S$. Cuối cùng, dễ thấy nếu tần số quét lớn hơn 30Hz (e.g. f = 50Hz)  thì các LED dường như đang sáng cùng một lúc. Trong bài tập lớn này, timer interrupt được sử dụng để thiết kế một khoảng thời gian $T_S$ cho việc quét LED.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/digit_Led7.png}
+    \caption{Biểu diễn ký tự số bằng LED 7 đoạn}
+    \label{digit}
+\end{figure}
+
+LED đồng hồ (4 7-segment LEDs) trên kit thí nghiệm không được điều khiển trực tiếp từ chân ESP32. Để tiết kiệm chân, LED đồng hồ được điều khiển thông qua 2 IC 74HC595. IC này có thể giao tiếp với vi điều khiển thông qua giao tiếp SPI.
+
+\subsection{Giao tiếp SPI}
+\begin{itemize}
+    \item SPI - Serial Peripheral Interface - còn gọi là giao diện ngoại vi nối tiếp, chuẩn đồng bộ nối truyền dữ liệu ở chế độ full-duplex (song công toàn phần). Nghĩa là tại 1 thời điểm có thể xảy ra đồng thời quá trình truyền và nhận.
+    \item SPI là giao tiếp đồng bộ, bất cứ quá trình nào cũng đều được đồng bộ với xung clock sinh ra bởi thiết bị Master. Do đó, không cần phải lo lắng về tốc độ truyền dữ liệu.
+    \item Hoạt động của giao tiếp SPI: sử dụng 4 đường giao tiếp nên đôi khi được gọi là chuẩn truyền thông “ 4 dây”. 4 đường đó là :
+    \begin{itemize}
+        \item SCK (Serial Clock): Thiết bị Master tạo xung tín hiệu SCK và cung cấp cho Slave. Xung này giữ nhịp cho giao tiếp SPI và truyền dữ liệu. Điều này giúp giảm lỗi và tăng tốc độ truyền.
+        \item MISO (Master Input Slave Output): Tín hiệu tạo bởi thiết bị Slave và nhận bởi thiết bị Master. Đường MISO phải được kết nối giữa thiết bị Master và Slave.
+        \item MOSI (Master Output Slave Input): Tín hiệu tạo bởi thiết bị Master và nhận bởi thiết bị Slave. Đường MOSI phải được kết nối giữa thiết bị Master và Slave.
+        \item CS (Chip Select) hoặc SS(Slave Select): Chọn Slave để giao tiếp. Master kéo chân CS xuống mức 0 (Low) để chọn Slave. Vi điều khiển có thể tạo chân CS bằng cách cấu hình 1 chân GPIO chế độ Output.
+    \end{itemize}
+\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{graphics/spi.jpg}
+    \caption{Sơ đồ giao tiếp SPI}
+\end{figure}
+
+\subsection{IC 74HC595}
+74HC595 là một thanh ghi dịch (shift register) hoạt động trên giao thức nối tiếp vào song song ra (Serial IN Parallel OUT), tức là nó có thể nhận dữ liệu đầu vào nối tiếp và điều khiển 8 chân đầu ra song song. Điều này rất tiện dụng khi không có đủ chân GPIO trên vi điều khiển hoặc vi xử lý để kiểm soát số lượng đầu ra cần thiết.
+
+Đối với IC 74HC595, chúng ta cần quan tâm tới các chân SH\_CP, ST\_CP, SDI, SDO, Q0-Q7.
+
+\textbf{Nguyên lý hoạt động:} khi phát hiện cạnh lên tại tín hiệu SH\_CP thì dữ liệu của chân SDI sẽ được đưa vào thanh ghi dịch. Ghi tín hiệu chân ST\_CP xuống mức thấp, thì giá trị trong thanh ghi dịch sẽ được cập nhật ra các chân output Q7->Q0. Để mở rộng thêm tín hiệu output thì ta sẽ dùng 2 IC 74HC595 và kết nối chân SDO của một IC với chân SDI của IC còn lại.
+
+Với 2 IC thì ta có thể điều khiển được 16 output. Để điều khiển LED đồng hồ, ta cần 8 chân để điều khiển tín hiệu LED 7 đoạn, 4 chân để điều khiển chớp tắt 4 LED 7 đoạn, 1 chân để điều khiển dấu hai chấm. Như vậy chúng ta vẫn còn 3 output chưa được sử dụng, 3 output này sẽ được thiết kế để điều khiển LED5, LED6, LED7. Lưu ý: tất cả các chân tín hiệu kể trên đều tích cực mức thấp.
+
+Với nguyên lý hoạt động của 74HC595, ta thấy rằng có thể sử dụng SPI để hiện thực giao tiếp giữa MCU và IC. Chân SCK của MCU sẽ kết nối với chân SH\_CP của cả 2 IC, chân MOSI của MCU sẽ kết nối với chân SDI của IC đầu tiên.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{graphics/sche.PNG}
+    \caption{Sơ đồ nguyên lý điều khiển LED đồng hồ}
+\end{figure}

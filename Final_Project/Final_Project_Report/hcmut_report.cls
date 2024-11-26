@@ -67,6 +67,7 @@
 \onehalfspacing
 \raggedbottom
 % \renewcommand{\arraystretch}{1.3}
+\setlength{\parskip}{1em}
 
 % Set depth of numbering for sections and table of contents
 \setcounter{secnumdepth}{3}
