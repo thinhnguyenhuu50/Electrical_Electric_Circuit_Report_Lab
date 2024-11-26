@@ -1,0 +1,7 @@
+Record=TopLevelDocument|FileName=3.3V_Regulator.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=3.3V_Regulator.SchDoc|FileName=Current_Sensor_Circuit.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=3.3V_Regulator.SchDoc|FileName=ESP32_WROM_32.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=3.3V_Regulator.SchDoc|FileName=High_Current_LEDs.SchDoc|SheetNumber=6
+Record=NoMainPathDocument|SourceDocument=3.3V_Regulator.SchDoc|FileName=IC_74HC595.SchDoc|SheetNumber=7
+Record=NoMainPathDocument|SourceDocument=3.3V_Regulator.SchDoc|FileName=RS_485.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=3.3V_Regulator.SchDoc|FileName=Slide_Switch.SchDoc|SheetNumber=3

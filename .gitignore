@@ -328,15 +328,15 @@ Status\ Report.txt
 .~lock.*
 
 # Various Altium files
-*.PrjPCBStructure
-*.SchDocPreview
-*.PcbDocPreview
-__Previews
-*.PrjPcbStructure
-*.Dat
-*.REP 
-*.TLT
-*.LOG
-*.log
-*.htm
-*.$$$
+# *.PrjPCBStructure
+# *.SchDocPreview
+# *.PcbDocPreview
+# __Previews
+# *.PrjPcbStructure
+# *.Dat
+# *.REP 
+# *.TLT
+# *.LOG
+# *.log
+# *.htm
+# *.$$$

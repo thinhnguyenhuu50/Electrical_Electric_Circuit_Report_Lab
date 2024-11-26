@@ -1,17 +1,18 @@
 \section{Trả lời câu hỏi}
 
-\subsection{Câu 7: (Optional) How to use IC 74HC595 to design a circuit to display value on 4 7-segment
+\subsection{Câu 7:}
+\textbf{(Optional) How to use IC 74HC595 to design a circuit to display value on 4 7-segment
 LEDs?}
 \subsubsection{Timer}
 Timer là một tính năng quan trọng trong vi điều khiển hiện đại. Chúng giúp đo thời gian thực hiện tác vụ, tạo non-blocking code, kiểm soát pin timing và chạy hệ điều hành. Trong bài tập lớn này, chúng ta sẽ tìm hiểu cách sử dụng timer để chớp tắt đèn LED. Sử dụng timer interrupt để quét LED.
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{graphics/LED_7seg.PNG}
     \caption{Giao diện của 4 LED bảy đoạn kết nối với vi điều khiển}
 \end{figure}
 
 Mỗi LED bảy đoạn có bảy phân đoạn được đánh dấu từ \textbf{a} đến \textbf{g} \ref{digit} và phân đoạn thứ tám là dấu chấm thập phân. Trong diagram, mỗi LED bảy đoạn có 8 đèn LED bên trong tương ứng với 8 phân đoạn, nên tổng số đèn LED trong ma trận 4 LED bảy đoạn là 32. Tuy nhiên, không cần phải bật tất cả các đèn LED, chỉ cần một trong số chúng. Do đó, chỉ cần 12 chân để điều khiển 4 LED bảy đoạn. Sử dụng vi điều khiển, ta có thể bật các đèn cùng một khoảng thời gian $T_S$. Vì vậy, chu kỳ để  điều khiển 4 LED bảy đoạn sẽ là $4T_S$. Nói cách khác, những LED này được quét với  tần số $f = \frac{1}{4} T_S$. Cuối cùng, dễ thấy nếu tần số quét lớn hơn 30Hz (e.g. f = 50Hz)  thì các LED dường như đang sáng cùng một lúc. Trong bài tập lớn này, timer interrupt được sử dụng để thiết kế một khoảng thời gian $T_S$ cho việc quét LED.
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{graphics/digit_Led7.png}
     \caption{Biểu diễn ký tự số bằng LED 7 đoạn}
@@ -32,7 +33,7 @@ LED đồng hồ (4 7-segment LEDs) trên kit thí nghiệm không được đi�
         \item CS (Chip Select) hoặc SS(Slave Select): Chọn Slave để giao tiếp. Master kéo chân CS xuống mức 0 (Low) để chọn Slave. Vi điều khiển có thể tạo chân CS bằng cách cấu hình 1 chân GPIO chế độ Output.
     \end{itemize}
 \end{itemize}
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\textwidth]{graphics/spi.jpg}
     \caption{Sơ đồ giao tiếp SPI}
@@ -49,7 +50,7 @@ Với 2 IC thì ta có thể điều khiển được 16 output. Để điều k
 
 Với nguyên lý hoạt động của 74HC595, ta thấy rằng có thể sử dụng SPI để hiện thực giao tiếp giữa MCU và IC. Chân SCK của MCU sẽ kết nối với chân SH\_CP của cả 2 IC, chân MOSI của MCU sẽ kết nối với chân SDI của IC đầu tiên.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{graphics/sche.PNG}
     \caption{Sơ đồ nguyên lý điều khiển LED đồng hồ}
