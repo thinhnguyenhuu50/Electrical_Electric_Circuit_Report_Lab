@@ -1,7 +1,7 @@
 \section{Trả lời câu hỏi}
 
 \subsection{Câu 7:}
-\textbf{(Optional) How to use IC 74HC595 to design a circuit to display value on 4 7-segment
+\textbf{Question: How to use IC 74HC595 to design a circuit to display value on 4 7-segment
 LEDs?}
 \subsubsection{Timer}
 Timer là một tính năng quan trọng trong vi điều khiển hiện đại. Chúng giúp đo thời gian thực hiện tác vụ, tạo non-blocking code, kiểm soát pin timing và chạy hệ điều hành. Trong bài tập lớn này, chúng ta sẽ tìm hiểu cách sử dụng timer để chớp tắt đèn LED. Sử dụng timer interrupt để quét LED.
@@ -47,6 +47,8 @@ LED đồng hồ (4 7-segment LEDs) trên kit thí nghiệm không được đi�
 \textbf{Nguyên lý hoạt động:} khi phát hiện cạnh lên tại tín hiệu SH\_CP thì dữ liệu của chân SDI sẽ được đưa vào thanh ghi dịch. Ghi tín hiệu chân ST\_CP xuống mức thấp, thì giá trị trong thanh ghi dịch sẽ được cập nhật ra các chân output Q7->Q0. Để mở rộng thêm tín hiệu output thì ta sẽ dùng 2 IC 74HC595 và kết nối chân SDO của một IC với chân SDI của IC còn lại.
 
 Với 2 IC thì ta có thể điều khiển được 16 output. Để điều khiển LED đồng hồ, ta cần 8 chân để điều khiển tín hiệu LED 7 đoạn, 4 chân để điều khiển chớp tắt 4 LED 7 đoạn, 1 chân để điều khiển dấu hai chấm. Như vậy chúng ta vẫn còn 3 output chưa được sử dụng, 3 output này sẽ được thiết kế để điều khiển LED5, LED6, LED7. Lưu ý: tất cả các chân tín hiệu kể trên đều tích cực mức thấp.
+
+\newpage
 
 Với nguyên lý hoạt động của 74HC595, ta thấy rằng có thể sử dụng SPI để hiện thực giao tiếp giữa MCU và IC. Chân SCK của MCU sẽ kết nối với chân SH\_CP của cả 2 IC, chân MOSI của MCU sẽ kết nối với chân SDI của IC đầu tiên.
 
