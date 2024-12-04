@@ -1,3 +1,87 @@
 \section{Metal Oxide Semiconductor FET}
+As well as the Junction Field Effect Transistor (JFET), there is another type of Field Effect Transistor available whose Gate input is electrically insulated from the main current carrying channel and is therefore called an Insulated Gate Field Effect Transistor.
+
+The most common type of insulated gate FET which is used in many different types of electronic circuits is called the Metal Oxide Semiconductor Field Effect Transistor or MOSFET for short.
+
+The IGFET or MOSFET is a voltage controlled field effect transistor that differs from a JFET in that it has a “Metal Oxide” Gate electrode which is electrically insulated from the main semiconductor n-channel or p-channel by a very thin layer of insulating material usually silicon dioxide, commonly known as glass.
 \subsection{Depletion-mode MOSFET}
+The Depletion-mode MOSFET, which is less common than the enhancement mode types. This device is very similar to JFET, except that the maximum current saturation is obtained at VGS > 0.  The circuit used to verify IDSS and VP for DFET is presented as follows:
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width = 3in]{graphics/ex2/f1.png}
+    \caption{DFET verification in PSPICE}
+    \label{dfet_1}
+\end{figure}
+\pagebreak
+The device for a common DFET is MbreakND. After a dc sweep simulation when V3 varies from -5V to 0V, the results are shown bellow:
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width = 3in]{graphics/ex2/f2.png}
+    \caption{Simulation results with DFET}
+    \label{dfet_2}
+\end{figure}
+
+From this simulation results, it is confirmed that IDSS = 160mA and VP = -4V for DFET.
+
+\textbf{Students are proposed to implement the circuit bellow:}
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width = 3in]{graphics/ex2/f3.png}
+    \caption{Self bias configuration for DFET}
+    \label{dfet_3}
+\end{figure}
+
+
+
+Only the bias configuration is required to executed. Please capture the simulation results with current and voltage information on the circuit. Finally, explain these values by theory cal-culations.
+
+\textbf{a) Theory Calculation}
+\begin{equation}
+    I_D = I_{DSS} \left( 1 - \frac{V_{GS}}{V_P} \right)^2 \tag{1}
+\end{equation}
+
+\begin{equation}
+    V_{GS} = -I_D \cdot R_S \tag{2}
+\end{equation}
+
+From equations (1) and (2), we get:
+\begin{equation}
+    I_D = I_{DSS} \left( 1 - \frac{-I_D \cdot R_S}{V_P} \right)^2
+\end{equation}
+
+With:
+\[
+    I_{DSS} = 160 \, (\mu A), \quad V_P = -4 \, (V), \quad R_S = 1 \, (k\Omega)
+\]
+
+Thus:
+\[
+    I_D = 107.9 \, (mA) \quad (\text{omit } I_D = 148.4 \, (\mu A) \text{due to } \, I_D > I_{DSS})
+\]
+\[
+    V_{GS} = -148.4 \, (mV)
+\]
+\textbf{b) Pspice Simulation}
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{graphics/ex2/f4.PNG}
+\end{figure}
+
 \subsection{Enhancement-mode MOSFET}
+The more common Enhancement-mode MOSFET or eMOSFET. The device is normally “OFF” (non-conducting) when the gate bias voltage, VGS is equal to zero. For the n-channel enhance-ment MOS transistor a drain current will only flow when a gate voltage ( VGS ) is applied to the gate terminal greater than the threshold voltage ( VTH ) level in which conductance takes place making it a transconductance device. In other words, for an n-channel enhancement mode MOSFET: +VGS turns the transistor “ON”, while a zero or -VGS turns the transistor “OFF”. Thus the enhancement-mode MOSFET is equivalent to a “normally-open” switch.
+
+The reverse is true for the p-channel enhancement MOS transistor. When VGS = 0 the device is “OFF” and the channel is open. The application of a negative (-ve) gate voltage to the p-type eMOSFET enhances the channels conductivity turning it “ON”. Then for an p-channel enhancement mode MOSFET: +VGS turns the transistor “OFF”, while -VGS turns the transistor “ON”.
+
+The validation of an EFET in PSPICE is presented bellow. The typical EFET in PSPICE is \textbf{MbreakN} device.
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width = 3in]{graphics/ex2/f5.png}
+    \caption{EFET validation}
+\end{figure}
+
+A dc sweep simulation with V3 can be performed. The simulation results with V3 varies from -1V to 5V are presented as following:
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[width = 4.5in]{graphics/ex2/f6.png}
+    \caption{Simulation results with EFET}
+\end{figure}
