@@ -1,4 +1,30 @@
 \section{Trả lời câu hỏi}
+\subsection{Câu 2:}
+\textbf{Câu hỏi: Trong \ref{subsec: Interfacing Slide Switch with an MCU}, điện áp của SW1 khi công tắc trượt 1 bật và khi tắt là bao nhiêu?}
+
+\textbf{Trả lời}
+\begin{itemize}
+    \item Khi công tắc trượt 1 bật, SW1 được nối với GND nên điện áp tại SW1 bằng 0V.
+    \item Khi công tắt trượt 1 tắt, mạch hở tại GND nên không có dòng điện chạy qua trở (hoặc rất nhỏ). Ta có $V_{SW1} = V_{3.3V} - I.R = V_{3.3V}$, do đó điện áp tại SW1 là 3.3 V 
+\end{itemize}
+
+\textbf{Mô phỏng}
+
+Trong mạch \ref{subsec: Interfacing Slide Switch with an MCU}, các SW được nối vào chân GPIO của ESP32-WROM-32 part nên ta mô phỏng SW sẽ được nối theo kiểu chân đầu ra GPIO push-pull.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/section5/f1.png}
+    \caption{SW1 ON}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/section5/f2.png}
+    \caption{SW1 OFF}
+\end{figure}
+
+\pagebreak
 
 \subsection{Câu 7:}
 \textbf{Câu hỏi: Sử dụng IC 74HC595 để thiết kế mạch hiển thị giá trị trên 4 Led 7 đoạn}
