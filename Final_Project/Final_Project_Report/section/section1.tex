@@ -1,1 +1,55 @@
 \section{Tổng quan đề tài}
+\subsection{Mục tiêu}
+Trong bài tập lớn này, nhóm sử dụng Altium Designer để thiết kế và bố trí mạch điện
+tổng hợp nhiều kiến thức đã học trong môn học này.
+
+Bao gồm:
+
+\begin{itemize}
+    \item Cách thiết kế công tắc đầu vào kỹ thuật số (digital input switches).
+    \item Cách sử dụng diode để tránh đoản mạch.
+    \item Cách sử dụng bóng bán dẫn tạo ra tín hiệu dòng điện cao (transistor generating a high current signal).
+    \item Cách sử dụng opamp làm bộ đệm (buffer) và bộ lọc thông thấp (a low-pass filter) trước khi đọc tín hiệu ADC.
+    \item Cách kết nối tất cả tín hiệu đầu vào và đầu ra với bộ vi điều khiển (micro-controller).
+\end{itemize}
+
+\subsection{Thông số kỹ thuật}
+Trong dự án này, mục tiêu của nhóm là thiết kế một mạch có khả năng:
+
+\begin{itemize}
+    \item Đo dòng điện của tín hiệu AC 220V.
+    \item Đặt địa chỉ (address) để phân biệt với các mạch tương tự khác, tối đa 16.
+    \item Đo dòng điện tối đa lên tới 5A hoặc lên tới 10A.
+    \item Gửi dữ liệu đến một cổng qua RS485 hoặc Wifi hoặc Bluetooth.
+    \item Hiển thị trên LED 7 đoạn dùng IC 74HC595.
+\end{itemize}
+
+\subsection{Giải pháp}
+Để đáp ứng được yêu cầu trên, một trong những giải pháp mà chúng ta có thể nghĩ tới đó là:
+
+\begin{itemize}
+    \item Chúng ta sẽ sử dụng cảm biến dòng điện [1] (current sensor) để đo dòng điện của tín hiệu AC. Cảm biến
+    nên hỗ trợ đo tới 5A hoặc lên tới 10A. Có nhiều cảm biến hiện tại
+    có sẵn trên thị trường, nhóm sẽ sử dụng TA12 [2] cho dòng điện tối đa 5A
+    và TA17 cho tối đa 10A. Chúng rẻ và dễ sử dụng.
+    \item Chúng ta sẽ sử dụng 4 công tắc trượt (slide switches) để đặt địa chỉ bảng (board address).
+    \item Chúng ta sẽ sử dụng một IC có thể chuyển đổi từ tín hiệu UART sang tín hiệu RS485 [3] để truyền dữ liệu qua RS485.
+    \item Chúng ta sẽ sử dụng bo mạch vi điều khiển (MCU), cụ thể là ESP32-WROOM-32 [4] làm
+    bộ xử lý chính. ESP32-WROOM-32 là MCU WiFi và Bluetooth chung, mạnh mẽ
+    mô-đun phù hợp với nhiều ứng dụng IoT.
+\end{itemize}
+
+Nhóm sẽ liệt kê tất cả các phần cần thiết cho mạch này. Dựa vào giải pháp trên,
+mạch nên bao gồm:
+\begin{itemize}
+    \item Một nguồn điện đầu vào có dải điện áp 5V - 36V.
+    \item Bộ điều chỉnh 3,3V để cấp nguồn cho mô-đun ESP32-WROOM-32.
+    \item Một bo mạch vi điều khiển ESP32-WROOM-32.
+    \item Cảm biến TA12/TA17 hỗ trợ dòng điện lên tới 5A hoặc lên đến 10A.
+    \item Công tắc trượt cho địa chỉ bảng.
+    \item Đèn LED hiển thị trạng thái.
+    \item Mạch RS485.
+    \item Một số tụ lọc nhiễu.
+\end{itemize}
+
+

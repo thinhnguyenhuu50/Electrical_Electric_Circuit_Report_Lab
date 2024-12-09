@@ -1,6 +1,6 @@
 \section{Trả lời câu hỏi}
-\subsection{Câu 1:}
-\textbf{Một số cảm biến dòng điện trên thị trường}
+\subsection{Câu 1}
+\textbf{Câu hỏi: Một số cảm biến dòng điện trên thị trường}
 
 \begin{enumerate}
     \item \textbf{TMCS1101}: dùng rộng rãi từ đo dòng nhỏ trong hệ thống điện tử đến đo dòng lớn hơn trong thiết bị công nghiệp.
@@ -59,8 +59,8 @@
     \end{itemize}
 
 \end{enumerate}
-
-\subsection{Câu 2:}
+\pagebreak
+\subsection{Câu 2}
 \textbf{Câu hỏi: Trong \ref{subsec: Interfacing Slide Switch with an MCU}, điện áp của SW1 khi công tắc trượt 1 bật và khi tắt là bao nhiêu?}
 
 \textbf{Trả lời}
@@ -86,8 +86,8 @@ Trong mạch \ref{subsec: Interfacing Slide Switch with an MCU}, các SW đượ
 \end{figure}
 
 \pagebreak
-\subsection{Câu 3:}
-\textbf{Trong hình 1.5, điện áp ở đầu ADC1\_CH7 và ADC1\_CH6 là bao nhiêu ?}
+\subsection{Câu 3}
+\textbf{Câu hỏi: Trong hình 1.5, điện áp ở đầu ADC1\_CH7 và ADC1\_CH6 là bao nhiêu ?}
 \textbf{Trả lời:}
 
 \textit{Xét U3B:}
@@ -102,7 +102,7 @@ Trong mạch \ref{subsec: Interfacing Slide Switch with an MCU}, các SW đượ
     \item $\beta = \frac{R_{15}}{R_{15} + R_{16}} = \frac{1k\Omega}{1k\Omega + 1k\Omega} = 0.5$
     \item $V_{ADC1\_CH6} = V_{out} \approx V_{in} \cdot \frac{1}{\beta} = 532.3mV \cdot \frac{1}{0.5} = 1064.6mV$
 \end{itemize}
-
+\pagebreak
 \subsection{Câu 4}
 \textbf{Câu hỏi: Trong \ref{subsec:Current sensor circuit}, chúng ta đã áp dụng bộ lọc thông áp (low pass filter) cho tín hiệu ADC\_IN. Tần số cắt (the cutoff frequency) của bộ lọc thông thấp này là gì? Nếu chúng ta muốn đặt tần số cắt là khoảng 10kHz, thì
 chúng ta có nên thay đổi những gì trong mạch của U3A?}
@@ -117,9 +117,9 @@ Trong mạch \ref{subsec:Current sensor circuit}, ta thấy R = R9 = 1K và C = 
 \[f_{OH} = \dfrac{1}{2\pi R9.C10} = \dfrac{1}{2\pi .1000.100.10^{-12}} \approx 1,5915 (MHz)\]
 
 Để đạt được tần số cắt khoảng 10kHz, ta phải thay đổi giá trị của R9 và C10 trong mạch của U3A sao cho $ f_{OH} = \dfrac{1}{2\pi.R9.C10 = 10.10^3 Hz}$ hay $ R9.C10 = \dfrac{1}{2\pi.10^4}$
-
-\subsection{Câu 5:}
- \textbf{Dòng điện đi qua mỗi LED trong hình 1.7 là bao nhiêu? Ta có thể làm gì nếu ta muốn điều khiển một LED công suất 100mW?}
+\pagebreak
+\subsection{Câu 5}
+ \textbf{Câu hỏi: Dòng điện đi qua mỗi LED trong hình 1.7 là bao nhiêu? Ta có thể làm gì nếu ta muốn điều khiển một LED công suất 100mW?}
 \textbf{Trả lời:}
 \begin{itemize}
     \item Tính toán dòng qua mỗi LED:
@@ -137,7 +137,12 @@ Trong mạch \ref{subsec:Current sensor circuit}, ta thấy R = R9 = 1K và C = 
         Vậy $R_{18}$ và $R_{19}$ cần có giả trị tối thiểu $22\Omega$ để điều khiển LED công suất 100mW.
     \end{itemize}
 \end{itemize}
-\subsection{Câu 7:}
+\pagebreak
+\subsection{Câu 6}
+\textbf{Câu hỏi: }
+
+\pagebreak
+\subsection{Câu 7}
 \textbf{Câu hỏi: Sử dụng IC 74HC595 để thiết kế mạch hiển thị giá trị trên 4 Led 7 đoạn}
 \subsubsection{Timer}
 Timer là một tính năng quan trọng trong vi điều khiển hiện đại. Chúng giúp đo thời gian thực hiện tác vụ, tạo non-blocking code, kiểm soát pin timing và chạy hệ điều hành. Trong bài tập lớn này, chúng ta sẽ tìm hiểu cách sử dụng timer để chớp tắt đèn LED. Sử dụng timer interrupt để quét LED.
