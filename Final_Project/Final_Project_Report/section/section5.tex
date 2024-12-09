@@ -1,4 +1,65 @@
 \section{Trả lời câu hỏi}
+\subsection{Câu 1:}
+\textbf{Một số cảm biến dòng điện trên thị trường}
+
+\begin{enumerate}
+    \item \textbf{TMCS1101}: dùng rộng rãi từ đo dòng nhỏ trong hệ thống điện tử đến đo dòng lớn hơn trong thiết bị công nghiệp.
+    \begin{itemize}
+        \item \textbf{Dòng tối đa}: Phụ thuộc vào phiên bản: ±20A, ±50A, ±100A lần lượt ứng với TMCS1101A1, TMCS1101A2 và TMCS1101A3.
+        \item \textbf{Cách lấy giá trị}: Đầu ra dạng analog, đọc qua ADC.
+        \item \textbf{Nguồn tham khảo}: \href{https://www.ti.com/product/TMCS1101}{Texas Instruments - TMCS1101}.
+        \item \textbf{Hình ảnh}:
+        \begin{center}
+            \includegraphics[width=0.2\textwidth]{graphics/section5/tmcs1101.png}
+        \end{center}
+    \end{itemize}
+
+    \item \textbf{INA226}:
+    \begin{itemize}
+        \item \textbf{Dòng tối đa}: Phụ thuộc vào giá trị điện trở, chỉ biết ngưỡng điện áp đầu vào là ±36V.
+        \item \textbf{Cách lấy giá trị}: Giao tiếp I2C.
+        \item \textbf{Nguồn tham khảo}: \href{https://www.ti.com/product/INA226}{TI - INA226}.
+        \item \textbf{Hình ảnh}:
+        \begin{center}
+            \includegraphics[width=0.3\textwidth]{graphics/section5/ina226.png}
+        \end{center}
+    \end{itemize}
+
+    \item \textbf{LTC2945}:
+    \begin{itemize}
+        \item \textbf{Dòng tối đa}: Giá trị dòng điện tối đa phụ thuộc giá trị điện trở. Ngưỡng điện áp đầu vào: $4V - 80V$.
+        \item \textbf{Cách lấy giá trị}: Giao tiếp I2C hoặc SMBus.
+        \item \textbf{Nguồn tham khảo}: \href{https://www.analog.com/en/products/ltc2945.html}{Analog Devices - LTC2945 Datasheet and Product Info}.
+        \item \textbf{Hình ảnh}:
+        \begin{center}
+            \includegraphics[width=0.6\textwidth]{graphics/section5/ltc2945.png}
+        \end{center}
+    \end{itemize}
+
+    \item \textbf{LEM HXS 20-NP}:
+    \begin{itemize}
+        \item \textbf{Dòng tối đa}: ±20A.
+        \item \textbf{Cách lấy giá trị}: Đầu ra dạng analog, đọc qua ADC.
+        \item \textbf{Nguồn tham khảo}: \href{https://www.lem.com/sites/default/files/products_datasheets/hxs_20-np.pdf}{LEM - HXS 20-NP Datasheet}.
+        \item \textbf{Hình ảnh}:
+        \begin{center}
+            \includegraphics[width=0.4\textwidth]{graphics/section5/lem_hxs20np.png}
+        \end{center}
+    \end{itemize}
+
+    \item \textbf{WCS1800}:
+    \begin{itemize}
+        \item \textbf{Dòng tối đa}: ±35A với dòng DC và ±25A với dòng AC.
+        \item \textbf{Cách lấy giá trị}: Đầu ra dạng analog, đọc qua ADC.
+        \item \textbf{Nguồn tham khảo}: \href{https://www.winson.com.tw/uploads/images/WCS1800.pdf}{Winson Electronics - WCS1800}.
+        \item \textbf{Hình ảnh}:
+        \begin{center}
+            \includegraphics[width=0.4\textwidth]{graphics/section5/wcs1800.png}
+        \end{center}
+    \end{itemize}
+
+\end{enumerate}
+
 \subsection{Câu 2:}
 \textbf{Câu hỏi: Trong \ref{subsec: Interfacing Slide Switch with an MCU}, điện áp của SW1 khi công tắc trượt 1 bật và khi tắt là bao nhiêu?}
 
@@ -25,7 +86,57 @@ Trong mạch \ref{subsec: Interfacing Slide Switch with an MCU}, các SW đượ
 \end{figure}
 
 \pagebreak
+\subsection{Câu 3:}
+\textbf{Trong hình 1.5, điện áp ở đầu ADC1\_CH7 và ADC1\_CH6 là bao nhiêu ?}
+\textbf{Trả lời:}
 
+\textit{Xét U3B:}
+\begin{itemize}
+    \item $V_{out} = V_{in} = 3.3V \cdot \frac{R_8}{R_5 + R_8} = 3.3V \cdot \frac{1k\Omega}{1k\Omega + 1k\Omega} = 1.65V$
+    \item Do $R_4, R_9, R_{11}, R_{14}$ mắc nối tiếp với nhau nên: \[I_{R_{14}} = I_{R_4} = \frac{(3.3 / 2) V}{R_4 + R_9 + R_{11} + R_{14}} = \frac{(3.3 / 2) V}{1k\Omega + 100\Omega + 1k\Omega + 1k\Omega} = 532.3 \mu A \]
+    \item $V_{ADC1\_CH7} = V_{out} - I_{R_4}.R_4 = 1.65V  - 532.3 \mu A \cdot 1k\Omega = 1.6447V$
+\end{itemize}
+\textit{Xét U3A:}
+\begin{itemize}
+    \item $V_{in} = I_{R_{14}}.R_{14} = 532.3 \mu A \cdot 1k\Omega = 532.3mV$
+    \item $\beta = \frac{R_{15}}{R_{15} + R_{16}} = \frac{1k\Omega}{1k\Omega + 1k\Omega} = 0.5$
+    \item $V_{ADC1\_CH6} = V_{out} \approx V_{in} \cdot \frac{1}{\beta} = 532.3mV \cdot \frac{1}{0.5} = 1064.6mV$
+\end{itemize}
+
+\subsection{Câu 4}
+\textbf{Câu hỏi: Trong \ref{subsec:Current sensor circuit}, chúng ta đã áp dụng bộ lọc thông áp (low pass filter) cho tín hiệu ADC\_IN. Tần số cắt (the cutoff frequency) của bộ lọc thông thấp này là gì? Nếu chúng ta muốn đặt tần số cắt là khoảng 10kHz, thì
+chúng ta có nên thay đổi những gì trong mạch của U3A?}
+
+\textbf{Trả lời}
+
+Bộ lọc thông áp (low pass filter) là bộ lọc cung cấp đầu ra không đổi từ 0 (DC) đến tần số cắt $f_{OH}$ (the cutoff frequency) và khi lớn hơn $f_{OH}$ sẽ
+không truyền tín hiệu nào trên tần số đó.
+\[f_{OH} = \dfrac{1}{2\pi RC}\]
+
+Trong mạch \ref{subsec:Current sensor circuit}, ta thấy R = R9 = 1K và C = C10 = 100pF.
+\[f_{OH} = \dfrac{1}{2\pi R9.C10} = \dfrac{1}{2\pi .1000.100.10^{-12}} \approx 1,5915 (MHz)\]
+
+Để đạt được tần số cắt khoảng 10kHz, ta phải thay đổi giá trị của R9 và C10 trong mạch của U3A sao cho $ f_{OH} = \dfrac{1}{2\pi.R9.C10 = 10.10^3 Hz}$ hay $ R9.C10 = \dfrac{1}{2\pi.10^4}$
+
+\subsection{Câu 5:}
+ \textbf{Dòng điện đi qua mỗi LED trong hình 1.7 là bao nhiêu? Ta có thể làm gì nếu ta muốn điều khiển một LED công suất 100mW?}
+\textbf{Trả lời:}
+\begin{itemize}
+    \item Tính toán dòng qua mỗi LED:
+    \begin{itemize}
+        \item Điện áp phân cực thuận $V_f$ của LED đỏ là 2V, của LED xanh lá là 3V.
+        \item $V_{CE_{sat}} = 0.2V$.
+        \item $I_{RED\_LED} = \frac{3.3V - V_{f_{RED\_LED}} - V_{CE_{Sat}}}{R_{18}} = \frac{3.3V - 2V - 0.2V}{330\Omega} = 3.33mA$.
+        \item $I_{GREEN\_LED} = \frac{3.3V - V_{f_{GREEN\_LED}} - V_{CE_{Sat}}}{R_{19}} = \frac{3.3V - 3V - 0.2V}{330\Omega} = 3.03mA$.
+    \end{itemize}
+    \item Để điều khiển một LED công suất 100mW:
+    \begin{itemize}
+        \item Cho $V_LED = 2V$.
+        \item $I_{LED} = \frac{P_{LED}}{V_{LED}} = \frac{100mW}{2V} = 50mA$.
+        \item $R_{LED} = \frac{V_{CC} - V_{LED} - V_{CE_{Sat}}}{I_{LED}} = \frac{3.3V - 2V - 0.2V}{50mA} = 22\Omega$.
+        Vậy $R_{18}$ và $R_{19}$ cần có giả trị tối thiểu $22\Omega$ để điều khiển LED công suất 100mW.
+    \end{itemize}
+\end{itemize}
 \subsection{Câu 7:}
 \textbf{Câu hỏi: Sử dụng IC 74HC595 để thiết kế mạch hiển thị giá trị trên 4 Led 7 đoạn}
 \subsubsection{Timer}
