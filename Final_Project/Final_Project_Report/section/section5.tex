@@ -3,7 +3,7 @@
 \textbf{Câu hỏi: Một số cảm biến dòng điện trên thị trường}
 
 \begin{enumerate}
-    \item \textbf{TMCS1101}: dùng rộng rãi từ đo dòng nhỏ trong hệ thống điện tử đến đo dòng lớn hơn trong thiết bị công nghiệp.
+    \item \textbf{TMCS1101}: dùng rộng rãi từ đo dòng nhỏ trong hệ thống điện tử đến đo dòng lớn hơn trong thiết bị công nghiệp. Cảm biến này sử dụng hiệu ứng Hall để đo dòng trực tiếp từ từ trường.
     \begin{itemize}
         \item \textbf{Dòng tối đa}: Phụ thuộc vào phiên bản: ±20A, ±50A, ±100A lần lượt ứng với TMCS1101A1, TMCS1101A2 và TMCS1101A3.
         \item \textbf{Cách lấy giá trị}: Đầu ra dạng analog, đọc qua ADC.
@@ -16,7 +16,7 @@
 
     \item \textbf{INA226}:
     \begin{itemize}
-        \item \textbf{Dòng tối đa}: Phụ thuộc vào giá trị điện trở, chỉ biết ngưỡng điện áp đầu vào là ±36V.
+        \item \textbf{Dòng tối đa}: Cảm biến này đo dòng điện thông qua điện áp trên điện trở Shunt. Dòng đo được tối đa phụ thuộc vào giá trị điện trở, chỉ biết ngưỡng điện áp đầu vào là ±36V.
         \item \textbf{Cách lấy giá trị}: Giao tiếp I2C.
         \item \textbf{Nguồn tham khảo}: \href{https://www.ti.com/product/INA226}{TI - INA226}.
         \item \textbf{Hình ảnh}:
@@ -27,7 +27,7 @@
 
     \item \textbf{LTC2945}:
     \begin{itemize}
-        \item \textbf{Dòng tối đa}: Giá trị dòng điện tối đa phụ thuộc giá trị điện trở. Ngưỡng điện áp đầu vào: $4V - 80V$.
+        \item \textbf{Dòng tối đa}: Cảm biến này đo dòng điện thông qua điện áp trên điện trở Shunt. Giá trị dòng điện tối đa phụ thuộc giá trị điện trở. Ngưỡng điện áp đầu vào: $4V - 80V$.
         \item \textbf{Cách lấy giá trị}: Giao tiếp I2C hoặc SMBus.
         \item \textbf{Nguồn tham khảo}: \href{https://www.analog.com/en/products/ltc2945.html}{Analog Devices - LTC2945 Datasheet and Product Info}.
         \item \textbf{Hình ảnh}:
@@ -38,7 +38,7 @@
 
     \item \textbf{LEM HXS 20-NP}:
     \begin{itemize}
-        \item \textbf{Dòng tối đa}: ±20A.
+        \item \textbf{Dòng tối đa}: ±20A. Cảm biến này đo dòng điện trực tiếp thông qua từ trường, dựa vào nguyên lý Hall.
         \item \textbf{Cách lấy giá trị}: Đầu ra dạng analog, đọc qua ADC.
         \item \textbf{Nguồn tham khảo}: \href{https://www.lem.com/sites/default/files/products_datasheets/hxs_20-np.pdf}{LEM - HXS 20-NP Datasheet}.
         \item \textbf{Hình ảnh}:
@@ -49,7 +49,7 @@
 
     \item \textbf{WCS1800}:
     \begin{itemize}
-        \item \textbf{Dòng tối đa}: ±35A với dòng DC và ±25A với dòng AC.
+        \item \textbf{Dòng tối đa}: ±35A với dòng DC và ±25A với dòng AC. Cảm biến này đo dòng điện trực tiếp thông qua từ trường, dựa vào nguyên lý Hall.
         \item \textbf{Cách lấy giá trị}: Đầu ra dạng analog, đọc qua ADC.
         \item \textbf{Nguồn tham khảo}: \href{https://www.winson.com.tw/uploads/images/WCS1800.pdf}{Winson Electronics - WCS1800}.
         \item \textbf{Hình ảnh}:
