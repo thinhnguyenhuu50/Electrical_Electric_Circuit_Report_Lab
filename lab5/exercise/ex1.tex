@@ -125,7 +125,7 @@ V3 = 3V. This circuit is a non inverting summing configuration using opamp.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.7\textwidth]{graphics/ex1/f9.png}
+    \includegraphics[width=0.5\textwidth]{graphics/ex1/f9.png}
     \caption{Non inverse summing using OPAMP}
 \end{figure}
 
@@ -133,11 +133,258 @@ V3 = 3V. This circuit is a non inverting summing configuration using opamp.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{graphics/ex1/f11.png}
+    \includegraphics[width=0.84\textwidth]{graphics/ex1/f11.png}
     \caption{Non inverse summing using OPAMP}
+\end{figure}
+\pagebreak
+
+\textbf{Giải thích}
+
+Theo định luật Ohm, $I_{R_1} = \dfrac{V_{in} - V_1}{R_1}$, $I_{R_2} = \dfrac{V_{in} - V_2}{R_2}$, $I_{R_3} = \dfrac{V_{in} - V_3}{R_3}$
+
+Theo KCL tại $V_{in}$, ta có: $I_{R_1} + I_{R_2} + I_{R_3} = I_{in}$ 
+
+Mà $I_{in} \approx 0$ (Do theo mô hình lý tưởng của opamp điện trở đầu vào rất lớn)
+
+Do vậy, $I_{R_1} + I_{R_2} + I_{R_3} = 0 $ hay $\dfrac{V_{in} - 1}{1k} + \dfrac{V_{in} - 2}{2k} + \dfrac{V_{in} - 3}{5k} = 0 \rightarrow V_{in} = \dfrac{26}{17} \approx 1.5294$ V.
+
+Ta có opamp đang hồi tiếp âm và điện trở đầu vào rất lớn do vậy $V^- = V^+$ 
+
+Theo định luật Ohm, ta có $\dfrac{V^- - 0}{R_i} = I_{R_f} = \dfrac{V_{out} - V^-}{R_f}$ (do dòng điện đi vào đầu âm của opamp gần bằng 0)
+
+Do đó, ta có: $V_{out} = (1 + \dfrac{R_f}{R_i}).V^- = (1 + \dfrac{R_f}{R_i}).V_{in} = 10.\dfrac{26}{17} \approx 15,2941$ V
+
+Nhưng $-V_{cc} \leq V_{out} \leq +V_{cc}$, $V_{cc}$ trong PSpice của Opamp là 15 V ($V_{NEG} = -15V$ và $V_{POS} = 15 V$) nên $V_{out}$ bão hòa ở mức 15 V.
+
+Do vậy, $V_{out} = 15$ V suy ra $V^- = 1.5 V$
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{graphics/ex1/f12.png}
+    \caption{Inverse summing using OPAMP}
+\end{figure}
+
+The second type of the summing amplifier is proposed as follows:
+
+Students are proposed to do the same steps above, with R1 = 1K, R2 = 2K, R3 = 10K and V1
+= 1V, V2 = 5V.
+
+\pagebreak
+
+\textbf{Ảnh mô phỏng}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{graphics/ex1/f13.png}
+    \caption{Inverse summing using OPAMP}
+\end{figure}
+
+\textbf{Giải thích}
+Theo định luật Ohm và KCL tại đầu âm của Opamp, ta có: $I_{R_1} + I_{R_2} + I_{R_3} = I^- = 0$
+
+Hay $\dfrac{V_1 - V^-}{R_1} + \dfrac{V_2 - V^-}{R_2} + \dfrac{V_out - V^-}{R_3} = 0$ (1)
+
+Mà $V_{out} = A(V^+ - V^-) = -A.V^-$.
+
+Do đó: $V^- = \dfrac{\dfrac{V_1}{R_1} + \dfrac{V_2}{R_2}}{\dfrac{1}{R_1}+ \dfrac{1}{R_2} + \dfrac{A+1}{R_3}} \approx 0$ (22) (Vì trong lí thuyết hệ số A rất lớn.)
+
+Nhưng trong mô phỏng PSpice thì $A = 10^6$ và $V_{cc} = 15$ ($V_{NEG} = -15V$ và $V_{POS} = 15 V$). 
+
+Từ (2) với $A = 10^6$, ta có: $V^- \approx 3,5.10^{-5}$ Nhưng $V_{out} = -A.V^- = -10^6.3,5.10^{-5} = -35 < -V_{cc}$
+
+Do vậy, $V_{out}$ phải bão hòa ở -15 V. Từ đó (1) suy ra $V^- = 1.25$ V
+\pagebreak
+
+\subsection{Low Pass Filter}
+
+Low pass filter is a filter which passes all frequencies from 0Hz (DC current) to upper cutoff frequency fH and rejects any signals above this frequency. A picture to demonstrate a
+low pass filter behavior is shown in the figure bellow:
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{graphics/ex1/f14.png}
+    \caption{Low pass filter principles}
+\end{figure}
+
+Similar to the closed loop configuration, there also 2 types of low pass filter, including the
+inverting and non-inverting low pass filter. The figure bellow is an inverting low pass filter.
+The cut-off frequency is determined by this equation:
+\[f_H = \dfrac{1}{2\pi R_2 C}\]
+
+By applying the value of R2 = 10KOhm and C = 1nF, the cut-off frequency is around
+16K Hz. In order to see the results, students are proposed to run the AC Sweep simulation profile (\textbf{Linear Type, Start and Stop frequency are 1Hz and 50kHz, 200 points}), as
+follows:
+
+\pagebreak
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.77\textwidth]{graphics/ex1/f15.png}
+    \caption{Inverting low pass filter}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.88\textwidth]{graphics/ex1/f16.png}
+    \caption{AC Sweep simulation profile}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{graphics/ex1/f17.png}
+    \caption{Simulation results}
 \end{figure}
 
 \pagebreak
-\subsection{Low Pass Filter}
+
+The final results can be archived like the figure bellow:
+It is said that the cut-off frequency point having the gain reduced 3dB. The gain at 0Hz
+is 10 (input voltage is 2V and output voltage is 20V), or 20l og (10) = 20dB, meanwhile, the
+gain at 16kHz is 7 (input voltage is 2V and output voltage is 14V), or 20l og (7) = 16.9.
+
+The second type of a low pass filter, the non-inverting configuration, is presented as follows:
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{graphics/ex1/f18.png}
+    \caption{Non-inverting low pass filter}
+\end{figure}
+
+\textbf{Students are proposed to calculate the value of R and C to have the amplifier factor
+equal to 10 and the cut-off frequency is the same as the previous example. The simulation result with AC Sweep mode is required to plot in this report as well.
+}
+
+\pagebreak
+
+\textbf{Trả lời}
+
+Ta có opamp hồi tiếp âm và điện trở đầu vào rất lớn, nên $V^+ = V^- = V_{in}$
+
+Tại f = 0 Hz, theo định luật Ohm, ta có: $\dfrac{V^- - 0}{R_{11}} = I_{R} = \dfrac{V_{out} - V^-}{R}$
+
+$V_{out} = (1 + \dfrac{R}{R_{11}}).V^- = (1 + \dfrac{R}{1k}). V_{in}$
+
+$GAIN A = \dfrac{V_{out}}{V_{in}} = 1 + \dfrac{R}{1k}$
+
+Để GAIN A = 10 tại f = 0Hz thì $1 + \dfrac{R}{1k} = 10 \rightarrow R = 9k$
+
+Ta có $f_{H} = \dfrac{1}{2\pi RC} = 16 kHz \rightarrow C \approx 1.105 (nF)$
+
+\textbf{Ảnh mô phỏng}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/ex1/f19.png}
+    \caption{Non-inverting low pass filter}
+\end{figure}
+\pagebreak
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{graphics/ex1/f20.png}
+    \caption{Simulation results}
+\end{figure}
+
+\textbf{Nhận xét:} GAIN tại f = 0Hz, $A = \dfrac{V_{out}}{V_{in}} = 10$ hay 20log(10) = 20dB. GAIN tại $f = f_{H} = 16kHz$, $A = \dfrac{V_{out}}{V_{in}} = \dfrac{14.203}{2} = 7.1015$ hay $20log(7.1015) \approx 17.027$ dB
+
+Điểm tần số cắt có GAIN giảm 3dB.
+
 \subsection{High Pass Filter}
+In contrast to the low pass filter, there is a high pass filter, which can be referred from this
+link:
+\url{https://www.allaboutcircuits.com/video-tutorials/op-amps-low-pass-and-high-pass-active-filters/}
+Students are proposed to implement a high pass filter in PSPICE and explain the behaviors
+of your high pass filter.
+
+\textbf{Trả lời}
+\pagebreak
+
+\textbf{Ảnh mô phỏng}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{graphics/ex1/f22.png}
+    \caption{Non-inverting high pass filter}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{graphics/ex1/f21.png}
+    \caption{Simulation results}
+\end{figure}
+\pagebreak
+\textbf{Giải thích} Ngược lại với bộ lọc thông thấp (low-pass filter), mức độ cản dòng của tụ điện là $Z_C = \frac{1}{2\pi fC}$ nên khi tần số nhỏ thì khả năng cản trở dòng điện của tụ lớn làm hạn dòng khiến biên độ dòng I nhỏ, điện áp vào opamp sẽ bằng dòng I.R1 khiến cho $GAIN = \dfrac{V_{out}}{V_{in}}$ (Vout là đầu ra của Opamp và Vin là tại nguồn dòng) giảm. Khi tần số tăng thì khả năng cản dòng của tụ cũng giảm đi khiến điện áp vào opamp, từ làm GAIN tăng. Còn GAIN của opamp khi tần số rất lớn sẽ là $GAIN = \dfrac{V_{out}}{V_{in}} = 1 + \dfrac{R}{R_{11}}$. Trong mô phỏng trên GAIN tại tần số rất lớn là 10 và tần số cắt của high-pass filter là $f_{L} = \dfrac{1}{2\pi R_1 C_1} \approx 16 kHz$. 
+
+Như vậy khi tần số càng tăng thì GAIN càng tăng và tiệm cận đến 10. Tại tần số rất lớn thì GAIN = 10, tại f = 16kHz thì GAIN =  7.086, tại f = 0 Hz thì GAIN = 0. 
+
 \subsection{Comparator with Hysteresis (Schmitt Trigger)}
+
+The two resistors R1 and R2 act only as a "pure" attenuator (voltage divider). The input
+loop acts as a simple series voltage summer that adds a part of the output voltage in series
+to the circuit input voltage. This series positive feedback creates the needed hysteresis
+that is controlled by the proportion between the resistances of R1 and the whole resistance (R1 and R2). The effective voltage applied to the op-amp input is floating so the op-amp must have a differential input.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.55\textwidth]{graphics/ex1/f23.png}
+    \caption{Inverting Schmitt trigger}
+\end{figure}
+
+The circuit is named inverting since the output voltage always has an opposite sign to the
+input voltage when it is out of the hysteresis cycle (when the input voltage is above the
+high threshold or below the low threshold). However, if the input voltage is within the
+hysteresis cycle (between the high and low thresholds), the circuit can be inverting as well
+as non-inverting. The output voltage is undefined and it depends on the last state so the
+circuit behaves like an elementary latch.
+
+In PSPice, this trigger is implemented as follows, with 3 voltage markers:
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.55\textwidth]{graphics/ex1/f24.png}
+    \caption{Inverting Schmitt trigger}
+\end{figure}
+
+The OPAMP device is modified in the \textbf{Properties} windows (right click on the component
+and chose Edit Properties or double click on the component), in order to set the VPOS
+and VNEG to +5V and -5V, as follows:
+
+The simulation profile in this exercise is the \textbf{Time Domain}, and is configured as follows:
+Finally, the simulation results can be archived as follows:
+
+\textbf{Students are proposed to explain the signal at the output of the opamp. Why the signal
+is toggled at +4V and -4V.}
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.66\textwidth]{graphics/ex1/f25.png}
+    \caption{Schmitt trigger in PSPICE}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6666\textwidth]{graphics/ex1/f26.png}
+    \caption{Simulation profile}
+\end{figure}
+\pagebreak
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.66\textwidth]{graphics/ex1/f27.png}
+    \caption{Schmitt trigger simulation results}
+\end{figure}
+
+\textbf{Trả lời}
+
+Theo định luật Ohm, ta có: $\dfrac{V_{out} - V^+}{R_{22}} = I_{R_{22}} = \dfrac{V^+ - 0}{R_{23}} \rightarrow V_{out} = (1 + \dfrac{R_{22}}{R_{23}}).V^+$ (1)
+
+Mà $V_{out} = A(V^+ - V^-)$
+
+$\rightarrow V^+ = \dfrac{A}{A - 1 - \frac{R_{22}}{R_{23}}}.V^-$ hay $V_{out} = A(V^+ - V^-) = A(\dfrac{A}{A - 1 - \frac{R_{22}}{R_{23}}} - 1).V^- = \dfrac{A(1 + \frac{R_{22}}{R_{23}})}{A-1-\frac{R_{22}}{R_{23}}}.V^-$
+
+Vậy $V_{out} = \dfrac{5}{4}.\dfrac{A}{A - 5/4} \approx \dfrac{5}{4}.V^-$ (do A rất lớn).
+
+Nhưng trong mô phỏng trên PSpice, $V_{POS} = +5V$, $V_{NEG} = -5V$ nên $-5V \leq V_{out} \leq 5V$ nên khi biên độ của $V^- \geq 4V$ ($V^- \leq -4V$) thì $V_{out}$ sẽ bị bão hòa ở mức 5V (hoặc - 5V). Do đó nên điện áp tại $V_{out}$ sẽ chuyển đổi (toggled) ở mức -5V và +5V.
+
+Theo (1), ta có: $V^+ = \dfrac{V_{out}}{1 + \frac{R_{22}}{R_{23}}} = \frac{4}{5}.V_{out}$ nên điện áp của $V^+$ sẽ chuyển đổi (toggled) ở mức -4V và +4V.
+
+
