@@ -1,20 +1,59 @@
 \section{Exercises}
-\subsection{Self bias configuration}
+Dựa vào mô phỏng, ta đã có $I_{DSS} = 400mA$ và $V_P = -2V$
+\subsection{Self-bias configuration}
 \textbf{Mô phỏng}
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{graphics/ex1/f1.PNG}
+    \includegraphics[width=0.7\textwidth]{graphics/ex1/f1.PNG}
 \end{figure}
 
-\textbf{Tính toán theo lý thuyết}
-Tính $I_D$ và $V_{GS}$
+\textbf{Tính $I_D$ và $V_{GS}$ theo lý thuyết}
+
+Với cấu hình self-bias, ta sử dụng hai công thức sau:
+\begin{itemize}
+    \item $V_{GS} = -I_D \cdot R_S$ (1)
+    \item $I_D = I_{DSS} \left(1 - \frac{V_{GS}}{V_P}\right)^2$ (2) 
+\end{itemize}
+Thế (1) vào (2) ta được:
+\[
+    I_D = I_{DSS} \left(1 + \frac{I_D \cdot R_S}{V_P}\right)^2
+\] 
+
+Với $R_S = 1k \Omega$ và $V_P = -2V$, ta có:
+\[
+    I_D = 400mA \cdot \left(1 + \frac{I_D \cdot 1k \Omega}{-2V}\right)^2
+\]
+Giải phương trình trên ta được:
+\begin{itemize}
+    \item $I_D = 1.86mA$ => $V_{GS} = -1.86mA * 1k \Omega = -1.86V > V_{P}$, nhận cặp giá trị này. 
+    \item $I_D = 2.15mA$ => $V_{GS} = -2.15mA * 1k \Omega = -2.15V < V_{P}$, loại cặp giá trị này. 
+\end{itemize}
+Vậy $I_D = 1.86mA$ và $V_{GS} = -1.86V$.
+
+
 
 \subsection{Voltage divider configuration}
 \textbf{Mô phỏng}
 \begin{figure}[!htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{graphics/ex1/f2.PNG}
+    \includegraphics[width=0.7\textwidth]{graphics/ex1/f2.PNG}
 \end{figure}
 
-\textbf{Tính toán theo lý thuyết}
-Tính $I_D$ và $V_{GS}$
+\textbf{Tính $I_D$ và $V_{GS}$ theo lý thuyết}
+
+Với cấu hình voltage divider, ta sử dụng ba công thức sau:
+\begin{itemize}
+    \item $V_G = \frac{R_2 V_{DD}}{R_1 + R_2} = \frac{2.2M \Omega * 12V}{3.3M \Omega + 2.2M \Omega} = 4.55V$
+    \item $V_{GS} = V_G - I_D \cdot R_S = 4.55 - I_D \cdot 1k \Omega$ (3)
+    \item $I_D = I_{DSS} \left(1 - \frac{V_{GS}}{V_P}\right)^2$ (4) 
+\end{itemize}
+Thế các giá trị đã biết từ giả thiết và từ (3) vào (4) ta được phương trình sau:
+\[
+    I_D = 400mA \left(1 - \frac{4.55 - I_D \cdot 1k \Omega}{-2V}\right)^2
+\]
+Giải phương trình trên, ta được hai giá trị $I_D$:
+\begin{itemize}
+    \item $I_D = 6.81mA$ => $V_{GS} = 4.55 - 6.81mA * 1k \Omega = -2.26V < V_{P}$, loại cặp giá trị này.
+    \item $I_D = 6.30mA$ => $V_{GS} = 4.55 - 6.30mA * 1k \Omega = -1.75V > V_{P}$, nhận cặp giá trị này.
+\end{itemize}
+Vậy $I_D = 6.30mA$ và $V_{GS} = -1.75V$.
